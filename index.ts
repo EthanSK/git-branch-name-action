@@ -12,13 +12,13 @@ async function run() {
     if (isPullRequest && process.env.GITHUB_HEAD_REF) {
       branchName = process.env.GITHUB_HEAD_REF
     } else {
-      if (!process.env.GITHUB_REF) {
-        throw new Error("GITHUB_EVENT_PATH env var not set")
-      }
+      // if (!process.env.GITHUB_REF) {
+      //   throw new Error("GITHUB_EVENT_PATH env var not set")
+      // }
       core.info("GITHUB_REF value: " + process.env.GITHUB_REF)
       core.debug("GITHUB_REF value: " + process.env.GITHUB_REF)
       console.log("GITHUB_REF value: " + process.env.GITHUB_REF)
-      branchName = process.env.GITHUB_REF
+      branchName = process.env.GITHUB_REF!
       // .split("/")
       //   .slice(2)
       //   .join("/")
