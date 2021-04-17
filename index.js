@@ -11,16 +11,13 @@ async function run() {
       if (!process.env.GITHUB_REF) {
         throw new Error("GITHUB_EVENT_PATH env var not set")
       }
-      // core.info("GITHUB_REF value: " + process.env.GITHUB_REF)
-      // core.debug("GITHUB_REF value: " + process.env.GITHUB_REF)
-      // console.log("GITHUB_REF value: " + process.env.GITHUB_REF)
       branchName = process.env.GITHUB_REF.split("/")
         .slice(2)
         .join("/")
         .replace(/\//g, "-")
     }
 
-    core.exportVariable("GIT_BRANCH_NAME", process.env.GITHUB_REF)
+    core.exportVariable("GIT_BRANCH_NAME", branchName)
   } catch (error) {
     core.setFailed(error.message)
   }
