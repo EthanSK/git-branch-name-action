@@ -6,6 +6,6 @@ jobs:
     steps:
       - name: Git branch name
         id: git-branch-name
-        uses: actions/git-branch-name-action@v1
+        uses: EthanSK/git-branch-name-action@v1
       - name: Echo the branch name
         run: echo "The time was ${GIT_BRANCH_NAME}"
