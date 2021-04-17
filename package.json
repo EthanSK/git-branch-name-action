@@ -1,0 +1,26 @@
+{
+  "name": "git-branch-name-action",
+  "version": "1.0.0",
+  "description": "Gets the current git branch name of the running action for both pull_request and push triggers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthanSK/git-branch-name-action.git"
+  },
+  "author": "Ethan Sarif-Kattan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EthanSK/git-branch-name-action/issues"
+  },
+  "homepage": "https://github.com/EthanSK/git-branch-name-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.41"
+  }
+}
