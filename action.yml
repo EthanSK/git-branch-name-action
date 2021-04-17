@@ -1,13 +1,5 @@
 name: "Git Branch Name"
 description: "Gets the current git branch name of the running action for both pull_request and push triggers."
 runs:
-  using: "composite"
-  steps:
-    - name: Get branch name (non pull request)
-      if: github.event_name != 'pull_request'
-      shell: bash
-      run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
-    - name: Get branch name (pull request)
-      if: github.event_name == 'pull_request'
-      shell: bash
-      run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+  using: "node12"
+  main: index.js
