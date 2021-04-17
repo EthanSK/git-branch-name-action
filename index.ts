@@ -1,24 +1,24 @@
 import * as core from "@actions/core";
-import { readFileSync } from "fs";
 
 async function run() {
   try {
     if (!process.env.GITHUB_EVENT_PATH) {
       throw new Error("GITHUB_EVENT_PATH env var not set");
     }
-    const event = JSON.parse(
-      readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
-    );
-    const isPullRequest = !!event.pull_request;
 
-    let branchName;
-    if (isPullRequest) {
-      branchName = event.pull_request.head.ref;
+    const isPullRequest = !!process.env.GITHUB_HEAD_REF; //GITHUB_HEAD_REF is only set for pull request events https://docs.github.com/en/actions/reference/environment-variables
+
+    let branchName: string;
+    if (isPullRequest && process.env.GITHUB_HEAD_REF) {
+      branchName = process.env.GITHUB_HEAD_REF;
     } else {
       if (!process.env.GITHUB_REF) {
         throw new Error("GITHUB_EVENT_PATH env var not set");
       }
-      branchName = process.env.GITHUB_REF.split("/").slice(2).join("/");
+      branchName = process.env.GITHUB_REF.split("/")
+        .slice(2)
+        .join("/")
+        .replace(/\//g, "-");
     }
 
     core.exportVariable("GIT_BRANCH_NAME", branchName);
