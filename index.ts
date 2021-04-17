@@ -21,7 +21,7 @@ async function run() {
       //   .replace(/\//g, "-")
     }
 
-    core.exportVariable("GIT_BRANCH_NAME", process.env.GITHUB_HEAD_REF)
+    core.exportVariable("GIT_BRANCH_NAME", process.env)
   } catch (error) {
     core.setFailed(error.message)
   }
