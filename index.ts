@@ -18,10 +18,11 @@ async function run() {
       core.info("GITHUB_REF value: " + process.env.GITHUB_REF)
       core.debug("GITHUB_REF value: " + process.env.GITHUB_REF)
       console.log("GITHUB_REF value: " + process.env.GITHUB_REF)
-      branchName = process.env.GITHUB_REF.split("/")
-        .slice(2)
-        .join("/")
-        .replace(/\//g, "-")
+      branchName = process.env.GITHUB_REF
+      // .split("/")
+      //   .slice(2)
+      //   .join("/")
+      //   .replace(/\//g, "-")
     }
 
     core.exportVariable("GIT_BRANCH_NAME", branchName)
