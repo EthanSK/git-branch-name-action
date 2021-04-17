@@ -1,5 +1,8 @@
 name: "Git Branch Name"
 description: "Gets the current git branch name of the running action for both pull_request and push triggers."
+branding:
+  icon: "git-branch"
+  color: "purple"
 runs:
   using: "node12"
   main: index.js
