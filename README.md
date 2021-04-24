@@ -17,3 +17,10 @@ jobs:
       - name: Echo the branch name
         run: echo "Branch name ${GIT_BRANCH_NAME}"
 ```
+
+
+If you want to check the branch name in an if statement, you can do something like:
+
+```
+if: ${{ env.GIT_BRANCH_NAME == 'master' }}
+```
