@@ -2,6 +2,7 @@
 
 Gets the current git branch name of the running action for both pull_request and push triggers.
 
+UPDATE: Doesn't work if your branch name has '/' in the name...sorry.
 ## Usage
 
 ```
