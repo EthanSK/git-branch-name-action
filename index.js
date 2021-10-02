@@ -11,13 +11,10 @@ async function run() {
       if (!process.env.GITHUB_REF) {
         throw new Error("GITHUB_EVENT_PATH env var not set")
       }
-      branchName = process.env.GITHUB_REF.split("/")
-        .slice(2)
-        .join("/")
-        .replace(/\//g, "-")
+      branchName = process.env.GITHUB_REF
+        .replace(/^refs\/\w+/, "")
+        .replace(/\/merge$/, "");
     }
-
-    core.exportVariable("GIT_BRANCH_NAME", branchName)
   } catch (error) {
     core.setFailed(error.message)
   }
