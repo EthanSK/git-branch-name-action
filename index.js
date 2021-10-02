@@ -14,8 +14,8 @@ async function run() {
       branchName = process.env.GITHUB_REF
         .replace(/^refs\/\w+/, "")
         .replace(/\/merge$/, "");
-      core.setOutput("ref", branchName);
     }
+    core.setOutput("ref", branchName);
   } catch (error) {
     core.setFailed(error.message)
   }
